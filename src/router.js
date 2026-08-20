@@ -30,7 +30,6 @@ import AddressesPage from "./pages/AddressesPage";
 // pages — discovery
 import SearchResultsPage from "./pages/SearchResultsPage";
 import CategoryPage from "./pages/CategoryPage";
-import WishlistPage from "./pages/WishlistPage";
 
 // pages — static
 import AboutPage from "./pages/AboutPage";
@@ -81,7 +80,6 @@ export const router = createBrowserRouter([
       // Discovery
       { path: "search", Component: SearchResultsPage },
       { path: "categories/:slug", Component: CategoryPage },
-      { path: "wishlist", Component: WishlistPage },
 
       // Static
       { path: "about", Component: AboutPage },
