@@ -33,6 +33,13 @@ ESLint enforces recommended JavaScript rules plus React Hooks and Vite refresh r
 
 No testing framework or coverage threshold is configured. For each change, manually exercise the affected route with `npm run dev`, then run lint and a production build. If a test setup is introduced, colocate tests with the code they cover and use clear names such as `CartPage.test.jsx`.
 
+## Development Workflow
+
+- `main` is the live production branch. Code on this branch is deployed for real users.
+- `develop` contains the latest integrated work from all developers for shared testing.
+- `staging` mirrors Production as closely as possible and is used by QA, testers, and business stakeholders for final validation before release.
+- Name working branches with Conventional Commits / GitFlow prefixes followed by a descriptive task name: `feat/<task-name>`, `fix/<task-name>`, `hotfix/<task-name>`, `refactor/<task-name>`, or `chore/<task-name>`.
+
 ## Commit & Pull Request Guidelines
 
 Git history is unavailable in this checkout, so use concise imperative commits, such as `feat: add product filters` or `fix: handle empty cart`. Keep commits focused. Pull requests should explain the user-visible change, identify affected routes, link related issues when available, and include screenshots for visual updates. Note the validation commands run and any follow-up work.
