@@ -92,6 +92,9 @@ export function createApiClient({
         method,
         body: jsonBody ? JSON.stringify(body) : body,
         signal: controller.signal,
+        // Auth relies on an httpOnly refresh cookie (see features/auth) — the
+        // browser attaches/receives it automatically, JS never touches it.
+        credentials: "include",
         headers: {
           Accept: "application/json",
           ...(jsonBody ? { "Content-Type": "application/json" } : {}),
