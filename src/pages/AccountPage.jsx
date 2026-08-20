@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,16 @@ export default function AccountPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  const refreshUser = useAuthStore((state) => state.refreshUser);
   const [isPending, setIsPending] = useState(false);
+
+  useEffect(() => {
+    // Re-sync the profile on mount. If the in-memory access token has
+    // expired, this silently refreshes it (see callAuthenticated); if the
+    // session is gone entirely, the user is bounced back to /login by
+    // AccountLayout once isAuthenticated flips false.
+    refreshUser().catch(() => {});
+  }, [refreshUser]);
 
   async function handleLogout() {
     setIsPending(true);
